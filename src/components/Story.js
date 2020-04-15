@@ -5,12 +5,16 @@ export default function Story({ storyId }) {
   const [story, setStory] = useState({});
 
   useEffect(() => {
-    getStory(storyId).then((data) => data);
+    getStory(storyId).then((data) => data && data.url && setStory(data));
   }, []);
 
-  return (
-    <div>
-      <p>I'm story {JSON.stringify(storyId)}</p>
-    </div>
-  );
+  return story && story.url ? (
+    <>
+      <a href={story.url}>
+        <p>{story.title}</p>
+      </a>
+      By: <p>{story.by}</p>
+      Posted: <p>{story.time}</p>
+    </>
+  ) : null;
 }
