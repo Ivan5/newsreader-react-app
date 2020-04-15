@@ -10,10 +10,11 @@ export default function StoriesContainer() {
   }, []);
 
   return (
-    <div className="App">
+    <>
+      <h1>Hacker News Stories</h1>
       {storyIds.map((storyId) => (
         <Story key={storyId} storyId={storyId} />
       ))}
-    </div>
+    </>
   );
 }
